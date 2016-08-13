@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>blog name</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-08-09T15:23:50.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>gnay</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测试</title>
+    <link href="http://yoursite.com/2016/08/09/%E6%B5%8B%E8%AF%95/"/>
+    <id>http://yoursite.com/2016/08/09/测试/</id>
+    <published>2016-08-09T15:22:55.000Z</published>
+    <updated>2016-08-09T15:23:50.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="archives" scheme="http://yoursite.com/tags/archives/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 主题使用进阶</title>
+    <link href="http://yoursite.com/2016/08/09/Hexo-%E4%B8%BB%E9%A2%98%E4%BD%BF%E7%94%A8%E8%BF%9B%E9%98%B6/"/>
+    <id>http://yoursite.com/2016/08/09/Hexo-主题使用进阶/</id>
+    <published>2016-08-09T14:42:36.000Z</published>
+    <updated>2016-08-11T11:43:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>原文在<a href="http://blog.csdn.net/lsshlsw/article/details/50322465" target="_blank" rel="external">CSDN</a>,更换为yilia主题。</p>
+<p>###设置头像</p>
+<p>在站点 <code>_config.yml</code> 中添加</p>
+<p><code>avatar: http://....  # 头像的URL</code></p>
+<a id="more"></a>
+<p>###添加分类</p>
+<p>新建一个页面，命名为 categories</p>
+<p><code>hexo new page categories</code><br>在 <code>source/categories</code> 目录的 <code>index.md</code> 中修改:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: 分类</div><div class="line"></div><div class="line">date: 2015-12-02 12:44:45</div><div class="line"></div><div class="line">type: &quot;categories&quot;</div></pre></td></tr></table></figure>
+<p>在主题的 <code>_config.yml</code> 中取消注释:<code>categories: /categories</code></p>
+<p>在要分类的文章中加入 category 属性:<code>category: &quot;hexo&quot;  # 分类为 hexo</code></p>
+<p>###添加标签</p>
+<p>新建一个页面，命名为 tags</p>
+<p><code>hexo new page tags</code></p>
+<p>在 source/tags 目录的 index.md 中修改:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date: 2015-12-02 12:10:34</div><div class="line">type: &quot;tags&quot;</div></pre></td></tr></table></figure>
+<p>在主题的 _config.yml 中取消注释:</p>
+<p>tags: /tags<br>在需要变迁的文章中加入 tgs 属性:</p>
+<p>tags: [spark,sparkSQL]  # 添加spark和sparkSQL两个标签</p>
+<p>###添加评论</p>
+<p>在 <a href="“http://duoshuo.com“">多说</a> 创建一个站点，创建时填写的多说域名就是你的 duoshuo_shortname</p>
+<p>在站点 _config.yml 中设置：</p>
+<p>duoshuo_shortname: your_duoshuo_shortname</p>
+<h3 id="创建一篇新的文章"><a href="#创建一篇新的文章" class="headerlink" title="创建一篇新的文章"></a>创建一篇新的文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;文章名&quot;</div></pre></td></tr></table></figure>
+<h3 id="更新本地代码"><a href="#更新本地代码" class="headerlink" title="更新本地代码"></a>更新本地代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div></pre></td></tr></table></figure>
+<h3 id="提交到远程站点"><a href="#提交到远程站点" class="headerlink" title="提交到远程站点"></a>提交到远程站点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原文在&lt;a href=&quot;http://blog.csdn.net/lsshlsw/article/details/50322465&quot;&gt;CSDN&lt;/a&gt;,更换为yilia主题。&lt;/p&gt;
+&lt;p&gt;###设置头像&lt;/p&gt;
+&lt;p&gt;在站点 &lt;code&gt;_config.yml&lt;/code&gt; 中添加&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;avatar: http://....  # 头像的URL&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="archives" scheme="http://yoursite.com/tags/archives/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>name</title>
+    <link href="http://yoursite.com/2016/08/08/name/"/>
+    <id>http://yoursite.com/2016/08/08/name/</id>
+    <published>2016-08-08T15:18:20.000Z</published>
+    <updated>2016-08-11T11:44:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>原文在<a href="http://blog.csdn.net/lsshlsw/article/details/50322465" target="_blank" rel="external">CSDN</a>,更换为yilia主题。</p>
+<p>###设置头像</p>
+<p>在站点 <code>_config.yml</code> 中添加</p>
+<p><code>avatar: http://....  # 头像的URL</code></p>
+<a id="more"></a>
+<p>###添加分类</p>
+<p>新建一个页面，命名为 categories</p>
+<p><code>hexo new page categories</code><br>在 <code>source/categories</code> 目录的 <code>index.md</code> 中修改:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: 分类</div><div class="line"></div><div class="line">date: 2015-12-02 12:44:45</div><div class="line"></div><div class="line">type: &quot;categories&quot;</div></pre></td></tr></table></figure>
+<p>在主题的 <code>_config.yml</code> 中取消注释:<code>categories: /categories</code></p>
+<p>在要分类的文章中加入 category 属性:<code>category: &quot;hexo&quot;  # 分类为 hexo</code></p>
+<p>###添加标签</p>
+<p>新建一个页面，命名为 tags</p>
+<p><code>hexo new page tags</code></p>
+<p>在 source/tags 目录的 index.md 中修改:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date: 2015-12-02 12:10:34</div><div class="line">type: &quot;tags&quot;</div></pre></td></tr></table></figure>
+<p>在主题的 _config.yml 中取消注释:</p>
+<p>tags: /tags<br>在需要变迁的文章中加入 tgs 属性:</p>
+<p>tags: [spark,sparkSQL]  # 添加spark和sparkSQL两个标签</p>
+<p>###添加评论</p>
+<p>在 <a href="“http://duoshuo.com“">多说</a> 创建一个站点，创建时填写的多说域名就是你的 duoshuo_shortname</p>
+<p>在站点 _config.yml 中设置：</p>
+<p>duoshuo_shortname: your_duoshuo_shortname</p>
+<h3 id="创建一篇新的文章"><a href="#创建一篇新的文章" class="headerlink" title="创建一篇新的文章"></a>创建一篇新的文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;文章名&quot;</div></pre></td></tr></table></figure>
+<h3 id="更新本地代码"><a href="#更新本地代码" class="headerlink" title="更新本地代码"></a>更新本地代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div></pre></td></tr></table></figure>
+<h3 id="提交到远程站点"><a href="#提交到远程站点" class="headerlink" title="提交到远程站点"></a>提交到远程站点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原文在&lt;a href=&quot;http://blog.csdn.net/lsshlsw/article/details/50322465&quot;&gt;CSDN&lt;/a&gt;,更换为yilia主题。&lt;/p&gt;
+&lt;p&gt;###设置头像&lt;/p&gt;
+&lt;p&gt;在站点 &lt;code&gt;_config.yml&lt;/code&gt; 中添加&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;avatar: http://....  # 头像的URL&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
