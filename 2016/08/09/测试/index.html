@@ -8,27 +8,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。
                                   
-那么什么对象能够响应, 处理这些事件?
-###响应者只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们">
+那么什么对象能够响应, 处理这些事件?">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS事件传递与响应者链">
 <meta property="og:url" content="http://yoursite.com/2016/08/09/测试/index.html">
 <meta property="og:site_name" content="阳光">
 <meta property="og:description" content="iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。
                                   
-那么什么对象能够响应, 处理这些事件?
-###响应者只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们">
+那么什么对象能够响应, 处理这些事件?">
 <meta property="og:image" content="http://yoursite.com/ceshi.png">
 <meta property="og:image" content="http://yoursite.com/ceshi1.png
 ">
 <meta property="og:image" content="http://yoursite.com/ceshi2.png">
-<meta property="og:updated_time" content="2016-09-05T06:35:26.000Z">
+<meta property="og:updated_time" content="2016-09-05T06:38:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS事件传递与响应者链">
 <meta name="twitter:description" content="iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。
                                   
-那么什么对象能够响应, 处理这些事件?
-###响应者只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们">
+那么什么对象能够响应, 处理这些事件?">
 <meta name="twitter:image" content="http://yoursite.com/ceshi.png">
   
     <link rel="alternative" href="/atom.xml" title="阳光" type="application/atom+xml">
@@ -94,7 +91,7 @@
 						<li>Links</li>
 						
 						
-						<li>A propos</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -259,7 +256,8 @@
         <p>iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。</p>
 <p><img src="ceshi.png" width="500" height="200" alt="图片名称" align="center">                                  </p>
 <p>那么什么对象能够响应, 处理这些事件?</p>
-<p>###响应者<br>只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们都可以接收处理事件.</p>
+<a id="more"></a>
+<h3 id="响应者"><a href="#响应者" class="headerlink" title="响应者"></a>响应者</h3><p>只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们都可以接收处理事件.</p>
 <p>UIResponder内部提供处理事件的方法有 :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">触摸事件</div><div class="line">- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;</div><div class="line">- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;</div><div class="line">- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;</div><div class="line">- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;</div><div class="line">加速计事件</div><div class="line">- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event;</div><div class="line">- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event;</div><div class="line">- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event;</div><div class="line">远程控制事件</div><div class="line">- (void)remoteControlReceivedWithEvent:(UIEvent *)event;</div></pre></td></tr></table></figure>
 <p>除了以上方法, 现在还有一个类, UIGestureRecognizer, 它是一个抽象类，使用它的子类能帮助我们轻松识别view上的各种手势.</p>
