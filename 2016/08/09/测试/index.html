@@ -4,15 +4,33 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>测试 | 阳光</title>
+  <title>iOS事件传递与响应者链 | 阳光</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="测试">
+  <meta name="description" content="iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。
+                                  
+那么什么对象能够响应, 处理这些事件?
+###响应者只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS事件传递与响应者链">
 <meta property="og:url" content="http://yoursite.com/2016/08/09/测试/index.html">
 <meta property="og:site_name" content="阳光">
-<meta property="og:updated_time" content="2016-08-09T15:23:50.000Z">
+<meta property="og:description" content="iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。
+                                  
+那么什么对象能够响应, 处理这些事件?
+###响应者只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们">
+<meta property="og:image" content="http://jbcdn2.b0.upaiyun.com/2016/09/df24f5cf338db22510f2c72485e58dcd.png">
+<meta property="og:image" content="http://jbcdn2.b0.upaiyun.com/2016/09/b5cde4eb4e43e6dc905287d95fa5130d.png
+">
+<meta property="og:image" content="http://jbcdn2.b0.upaiyun.com/2016/09/6f9f8296ee1a45a09a2028667a388c56.png
+">
+<meta property="og:updated_time" content="2016-09-05T06:29:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试">
+<meta name="twitter:title" content="iOS事件传递与响应者链">
+<meta name="twitter:description" content="iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。
+                                  
+那么什么对象能够响应, 处理这些事件?
+###响应者只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们">
+<meta name="twitter:image" content="http://jbcdn2.b0.upaiyun.com/2016/09/df24f5cf338db22510f2c72485e58dcd.png">
   
     <link rel="alternative" href="/atom.xml" title="阳光" type="application/atom+xml">
   
@@ -77,7 +95,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>A propos</li>
 						
 					</ul>
 				</div>
@@ -219,7 +237,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      测试
+      iOS事件传递与响应者链
     </h1>
   
 
@@ -239,7 +257,59 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。</p>
+<p><img src="http://jbcdn2.b0.upaiyun.com/2016/09/df24f5cf338db22510f2c72485e58dcd.png" width="500" height="200" alt="图片名称" align="center">                                  </p>
+<p>那么什么对象能够响应, 处理这些事件?</p>
+<p>###响应者<br>只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们都可以接收处理事件.</p>
+<p>UIResponder内部提供处理事件的方法有 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">触摸事件</div><div class="line">- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;</div><div class="line">- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;</div><div class="line">- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;</div><div class="line">- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;</div><div class="line">加速计事件</div><div class="line">- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event;</div><div class="line">- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event;</div><div class="line">- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event;</div><div class="line">远程控制事件</div><div class="line">- (void)remoteControlReceivedWithEvent:(UIEvent *)event;</div></pre></td></tr></table></figure>
+<p>除了以上方法, 现在还有一个类, UIGestureRecognizer, 它是一个抽象类，使用它的子类能帮助我们轻松识别view上的各种手势.</p>
+<p>###UITouch</p>
+<p>当你用一根手指触摸屏幕时, 会创建一个与之关联的UITouch对象, 一个UITouch对象对应一根手指. 在事件中可以根据NSSet中UITouch对象的数量得出此次触摸事件是单指触摸还是双指多指等等.</p>
+<p>UITouch几个重要的属性 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">触摸产生时所处的窗口</div><div class="line">@property(nonatomic,readonly,retain) UIWindow *window;</div><div class="line">触摸产生时所处的视图</div><div class="line">@property(nonatomic,readonly,retain) UIView   *view;</div><div class="line">短时间内点按屏幕的次数，可以根据tapCount判断单击、双击或更多的点击</div><div class="line">@property(nonatomic,readonly) NSUInteger      tapCount;</div><div class="line">记录了触摸事件产生或变化时的时间，单位是秒</div><div class="line">@property(nonatomic,readonly) NSTimeInterval  timestamp;</div><div class="line">当前触摸事件所处的状态</div><div class="line">@property(nonatomic,readonly) UITouchPhase    phase;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">触摸产生时所处的窗口</div><div class="line">@property(nonatomic,readonly,retain) UIWindow *window;</div><div class="line">触摸产生时所处的视图</div><div class="line">@property(nonatomic,readonly,retain) UIView   *view;</div><div class="line">短时间内点按屏幕的次数，可以根据tapCount判断单击、双击或更多的点击</div><div class="line">@property(nonatomic,readonly) NSUInteger      tapCount;</div><div class="line">记录了触摸事件产生或变化时的时间，单位是秒</div><div class="line">@property(nonatomic,readonly) NSTimeInterval  timestamp;</div><div class="line">当前触摸事件所处的状态</div><div class="line">@property(nonatomic,readonly) UITouchPhase    phase;</div></pre></td></tr></table></figure>
+<p>UITouch的两个方法 (可用于view的拖拽)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">- (CGPoint)locationInView:(UIView *)view;</div><div class="line">/*</div><div class="line">  返回值表示触摸在view上的位置</div><div class="line">  这里返回的位置是针对传入的view的坐标系（以view的左上角为原点(0, 0)）</div><div class="line">  调用时传入的view参数为nil的话，返回的是触摸点在UIWindow的位置</div><div class="line">*/</div><div class="line">- (CGPoint)previousLocationInView:(UIView *)view;</div><div class="line">// 该方法记录了前一个触摸点的位置</div></pre></td></tr></table></figure>
+<p>###UIEvent<br>每产生一个事件, 就对应产生一个UIEvent. UIEvent记录着该事件产生的时间, 事件的类型等等.</p>
+<p>UIEvent几个重要的属性 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">事件类型</div><div class="line">@property(nonatomic,readonly) UIEventType     type;</div><div class="line">@property(nonatomic,readonly) UIEventSubtype  subtype;</div><div class="line">事件产生的时间</div><div class="line">@property(nonatomic,readonly) NSTimeInterval  timestamp;</div></pre></td></tr></table></figure>
+<p>事件的产生与传递</p>
+<p><img src="http://jbcdn2.b0.upaiyun.com/2016/09/b5cde4eb4e43e6dc905287d95fa5130d.png
+" width="400" height="400" alt="图片名称" align="center"> </p>
+<p>  手机屏幕是一个2D的平面, 这上面有几个view重叠在一起, 系统并不能分辨出你点击的是哪一个view, 所以响应你的触摸事件的是这个应用程序UIApplication, 而不是其中的一个UIView. 系统会将这次触摸事件加入到由UIApplication管理的一个队列中, 每次从中取出事件分发下去处理. 一般先发给keyWindow.</p>
+<p>keyWindow会在视图的层级结构中找到一个最合适的控件来处理触摸事件.</p>
+<p>由于触摸事件的传递方向是由父控件传递到子控件, 那何为最合适呢?</p>
+<ul>
+<li>自己能响应触摸事件</li>
+<li>触摸点在自己身上</li>
+<li>从后往前遍历子控件, 重复上两步</li>
+<li>如果没有符合条件的子控件, 那么就自己最合适处理</li>
+</ul>
+<p>根据上图来说明的话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">点击了绿色的view：</div><div class="line">UIApplication -&gt; UIWindow -&gt; 白色 -&gt; 绿色</div><div class="line">点击了蓝色的view：</div><div class="line">UIApplication -&gt; UIWindow -&gt; 白色 -&gt; 橙色 -&gt; 蓝色</div><div class="line">点击了黄色的view：</div><div class="line">UIApplication -&gt; UIWindow -&gt; 白色 -&gt; 橙色 -&gt; 蓝色 -&gt; 黄色</div></pre></td></tr></table></figure>
+<p>###两个系统在寻找最合适view的时候使用到的方法<br><code>– (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event;</code><br>当事件传递给控件的时候, 就会调用该方法, 去寻找最合适的view并返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">底层实现如下 :</div><div class="line">- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    // 1.判断当前控件能否接收事件</div><div class="line">    if (self.userInteractionEnabled == NO || self.hidden == YES || self.alpha     // 2. 判断点在不在当前控件</div><div class="line">    if ([self pointInside:point withEvent:event] == NO) return nil;</div><div class="line">    // 3.从后往前遍历自己的子控件</div><div class="line">    NSInteger count = self.subviews.count;</div><div class="line">    for (NSInteger i = count - 1; i &gt;= 0; i--) &#123;</div><div class="line">        UIView *childView = self.subviews[i];</div><div class="line">        // 把当前控件上的坐标系转换成子控件上的坐标系</div><div class="line">        CGPoint childP = [self convertPoint:point toView:childView];</div><div class="line">        UIView *fitView = [childView hitTest:childP withEvent:event];</div><div class="line">        if (fitView) &#123; // 寻找到最合适的view</div><div class="line">            return fitView;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    // 循环结束,表示没有比自己更合适的view</div><div class="line">    return self;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>– (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event</code><br>该方法判断触摸点是否在控件身上, 是则返回YES, 否则返回NO</p>
+<p>可以使用以上两个方法做到</p>
+<ul>
+<li>指鹿为马(明明点击的是B视图, 却由A视图来响应事件)</li>
+<li>穿透某控件点击被覆盖的下一层控件</li>
+<li>让父控件frame之外的子控件响应触摸事件</li>
+</ul>
+<p>###响应者链条<br>当找到最合适的响应者之后, 便会调用控件相应的touches方法来作具体处理. 然而这些方法默认是不处理, 并将该事件随着响应者链条往回传递, 交给上一个响应者来处理. (即调用super的touches方法)</p>
+<p><img src="http://jbcdn2.b0.upaiyun.com/2016/09/6f9f8296ee1a45a09a2028667a388c56.png
+" width="600" height="400" alt="图片名称" align="center"> </p>
+<p>很诡异吧, 好不容易找到了你, 你却跟老子说你不干活, 给前面找你的人干?</p>
+<p>######其实苹果这样设计是为了让一个事件能够被多个对象处理!</p>
+<p>那么问题来了~ 谁是上一个响应者? 如图所示 :</p>
+<ol>
+<li>如果view的控制器存在，就传递给控制器；如果控制器不存在，则将其传递给它的父视图</li>
+<li>在视图层次结构的最顶级视图，如果也不能处理收到的事件或消息，则其将事件传递给window对象进行处理</li>
+<li>如果window对象也不处理，则其将事件或消息传递给UIApplication对象</li>
+<li>如果UIApplication也不能处理该事件或消息，则将其丢弃</li>
+</ol>
+
       
     </div>
     
@@ -285,7 +355,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="测试" data-title="测试" data-url="http://yoursite.com/2016/08/09/测试/"></div>
+	<div class="ds-thread" data-thread-key="测试" data-title="iOS事件传递与响应者链" data-url="http://yoursite.com/2016/08/09/测试/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
