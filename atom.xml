@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-05T06:29:26.000Z</updated>
+  <updated>2016-09-05T06:35:26.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://yoursite.com/2016/08/09/%E6%B5%8B%E8%AF%95/"/>
     <id>http://yoursite.com/2016/08/09/测试/</id>
     <published>2016-08-09T15:22:55.000Z</published>
-    <updated>2016-09-05T06:29:26.000Z</updated>
+    <updated>2016-09-05T06:35:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。</p>
-<p><img src="http://jbcdn2.b0.upaiyun.com/2016/09/df24f5cf338db22510f2c72485e58dcd.png" width="500" height="200" alt="图片名称" align="center">                                  </p>
+<p><img src="ceshi.png" width="500" height="200" alt="图片名称" align="center">                                  </p>
 <p>那么什么对象能够响应, 处理这些事件?</p>
 <p>###响应者<br>只有继承自UIResponder的对象才能接收并处理事件, 我们把之类对象称之为’响应者’. UIApplication, UIViewController, UIView都继承自UIResponder, 因此他们都可以接收处理事件.</p>
 <p>UIResponder内部提供处理事件的方法有 :</p>
@@ -40,8 +40,8 @@
 <p>UIEvent几个重要的属性 :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">事件类型</div><div class="line">@property(nonatomic,readonly) UIEventType     type;</div><div class="line">@property(nonatomic,readonly) UIEventSubtype  subtype;</div><div class="line">事件产生的时间</div><div class="line">@property(nonatomic,readonly) NSTimeInterval  timestamp;</div></pre></td></tr></table></figure>
 <p>事件的产生与传递</p>
-<p><img src="http://jbcdn2.b0.upaiyun.com/2016/09/b5cde4eb4e43e6dc905287d95fa5130d.png
-" width="400" height="400" alt="图片名称" align="center"> </p>
+<p><img src="ceshi1.png
+" width="500" height="300" alt="图片名称" align="center"> </p>
 <p>  手机屏幕是一个2D的平面, 这上面有几个view重叠在一起, 系统并不能分辨出你点击的是哪一个view, 所以响应你的触摸事件的是这个应用程序UIApplication, 而不是其中的一个UIView. 系统会将这次触摸事件加入到由UIApplication管理的一个队列中, 每次从中取出事件分发下去处理. 一般先发给keyWindow.</p>
 <p>keyWindow会在视图的层级结构中找到一个最合适的控件来处理触摸事件.</p>
 <p>由于触摸事件的传递方向是由父控件传递到子控件, 那何为最合适呢?</p>
@@ -63,8 +63,7 @@
 <li>让父控件frame之外的子控件响应触摸事件</li>
 </ul>
 <p>###响应者链条<br>当找到最合适的响应者之后, 便会调用控件相应的touches方法来作具体处理. 然而这些方法默认是不处理, 并将该事件随着响应者链条往回传递, 交给上一个响应者来处理. (即调用super的touches方法)</p>
-<p><img src="http://jbcdn2.b0.upaiyun.com/2016/09/6f9f8296ee1a45a09a2028667a388c56.png
-" width="600" height="400" alt="图片名称" align="center"> </p>
+<p><img src="ceshi2.png" width="700" height="400" alt="图片名称" align="center"> </p>
 <p>很诡异吧, 好不容易找到了你, 你却跟老子说你不干活, 给前面找你的人干?</p>
 <p>######其实苹果这样设计是为了让一个事件能够被多个对象处理!</p>
 <p>那么问题来了~ 谁是上一个响应者? 如图所示 :</p>
@@ -79,7 +78,7 @@
     <summary type="html">
     
       &lt;p&gt;iOS中的事件有如下几种：触摸事件，加速计事件，远程控制事件。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://jbcdn2.b0.upaiyun.com/2016/09/df24f5cf338db22510f2c72485e58dcd.png&quot; width=&quot;500&quot; h
+&lt;p&gt;&lt;img src=&quot;ceshi.png&quot; width=&quot;500&quot; height=&quot;200&quot; alt=&quot;图片名称&quot; align=&quot;center&quot;&gt;                          
     
     </summary>
     
