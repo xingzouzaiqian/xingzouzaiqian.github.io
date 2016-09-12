@@ -141,46 +141,22 @@
   </entry>
   
   <entry>
-    <title>name</title>
+    <title>iOS中一个不是继承于NSObject的类NSProxy</title>
     <link href="http://yoursite.com/2016/08/08/name/"/>
     <id>http://yoursite.com/2016/08/08/name/</id>
     <published>2016-08-08T15:18:20.000Z</published>
-    <updated>2016-08-11T11:44:46.000Z</updated>
+    <updated>2016-09-10T14:05:31.000Z</updated>
     
-    <content type="html"><![CDATA[<p>原文在<a href="http://blog.csdn.net/lsshlsw/article/details/50322465" target="_blank" rel="external">CSDN</a>,更换为yilia主题。</p>
-<p>###设置头像</p>
-<p>在站点 <code>_config.yml</code> 中添加</p>
-<p><code>avatar: http://....  # 头像的URL</code></p>
+    <content type="html"><![CDATA[<p>###NSProxy 说明</p>
+<p>NSProxy 是一个虚基类，它为一些表现的像是其它对象替身或者并不存在的对象定义一套API。一般的，发送给代理的消息被转发给一个真实的对象或者代理本身load(或者将本身转换成)一个真实的对象。NSProxy的基类可以被用来透明的转发消息或者耗费巨大的对象的lazy 初始化。</p>
 <a id="more"></a>
-<p>###添加分类</p>
-<p>新建一个页面，命名为 categories</p>
-<p><code>hexo new page categories</code><br>在 <code>source/categories</code> 目录的 <code>index.md</code> 中修改:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: 分类</div><div class="line"></div><div class="line">date: 2015-12-02 12:44:45</div><div class="line"></div><div class="line">type: &quot;categories&quot;</div></pre></td></tr></table></figure>
-<p>在主题的 <code>_config.yml</code> 中取消注释:<code>categories: /categories</code></p>
-<p>在要分类的文章中加入 category 属性:<code>category: &quot;hexo&quot;  # 分类为 hexo</code></p>
-<p>###添加标签</p>
-<p>新建一个页面，命名为 tags</p>
-<p><code>hexo new page tags</code></p>
-<p>在 source/tags 目录的 index.md 中修改:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date: 2015-12-02 12:10:34</div><div class="line">type: &quot;tags&quot;</div></pre></td></tr></table></figure>
-<p>在主题的 _config.yml 中取消注释:</p>
-<p>tags: /tags<br>在需要变迁的文章中加入 tgs 属性:</p>
-<p>tags: [spark,sparkSQL]  # 添加spark和sparkSQL两个标签</p>
-<p>###添加评论</p>
-<p>在 <a href="“http://duoshuo.com“">多说</a> 创建一个站点，创建时填写的多说域名就是你的 duoshuo_shortname</p>
-<p>在站点 _config.yml 中设置：</p>
-<p>duoshuo_shortname: your_duoshuo_shortname</p>
-<h3 id="创建一篇新的文章"><a href="#创建一篇新的文章" class="headerlink" title="创建一篇新的文章"></a>创建一篇新的文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new &quot;文章名&quot;</div></pre></td></tr></table></figure>
-<h3 id="更新本地代码"><a href="#更新本地代码" class="headerlink" title="更新本地代码"></a>更新本地代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div></pre></td></tr></table></figure>
-<h3 id="提交到远程站点"><a href="#提交到远程站点" class="headerlink" title="提交到远程站点"></a>提交到远程站点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div></pre></td></tr></table></figure>]]></content>
+<p>NSProxy实现了包括NSObject协议在内基类所需的基础方法，但是作为一个虚拟的基类并没有提供初始化的方法。它接收到任何自己没有定义的方法他都会产生一个异常，所以一个实际的子类必须提供一个初始化方法或者创建方法，并且重载forwardInvocation:方法和methodSignatureForSelector:方法来处理自己没有实现的消息。一个子类的forwardInvocation:实现应该采取所有措施来处理invocation,比如转发网络消息，或者加载一个真实的对象，并把invocation转发给他。methodSignatureForSelector:需要为给定消息提供参数类型信息，子类的实现应该有能力决定他应该转发消息的参数类型，并构造相对应的NSMethodSignature对象。详细信息可以查看NSDistantObject, NSInvocation, and NSMethodSignature的类型说明。```</p>
+]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;原文在&lt;a href=&quot;http://blog.csdn.net/lsshlsw/article/details/50322465&quot;&gt;CSDN&lt;/a&gt;,更换为yilia主题。&lt;/p&gt;
-&lt;p&gt;###设置头像&lt;/p&gt;
-&lt;p&gt;在站点 &lt;code&gt;_config.yml&lt;/code&gt; 中添加&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;avatar: http://....  # 头像的URL&lt;/code&gt;&lt;/p&gt;
+      &lt;p&gt;###NSProxy 说明&lt;/p&gt;
+&lt;p&gt;NSProxy 是一个虚基类，它为一些表现的像是其它对象替身或者并不存在的对象定义一套API。一般的，发送给代理的消息被转发给一个真实的对象或者代理本身load(或者将本身转换成)一个真实的对象。NSProxy的基类可以被用来透明的转发消息或者耗费巨大的对象的lazy 初始化。&lt;/p&gt;
     
     </summary>
     

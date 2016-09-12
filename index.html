@@ -79,7 +79,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -349,7 +349,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/08/name/">name</a>
+      <a class="article-title" href="/2016/08/08/name/">iOS中一个不是继承于NSObject的类NSProxy</a>
     </h1>
   
 
@@ -358,10 +358,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>原文在<a href="http://blog.csdn.net/lsshlsw/article/details/50322465">CSDN</a>,更换为yilia主题。</p>
-<p>###设置头像</p>
-<p>在站点 <code>_config.yml</code> 中添加</p>
-<p><code>avatar: http://....  # 头像的URL</code></p>
+        <p>###NSProxy 说明</p>
+<p>NSProxy 是一个虚基类，它为一些表现的像是其它对象替身或者并不存在的对象定义一套API。一般的，发送给代理的消息被转发给一个真实的对象或者代理本身load(或者将本身转换成)一个真实的对象。NSProxy的基类可以被用来透明的转发消息或者耗费巨大的对象的lazy 初始化。</p>
       
     </div>
     
